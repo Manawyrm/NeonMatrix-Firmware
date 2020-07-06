@@ -13,6 +13,35 @@ void setup() {
 
 static const uint8_t PROGMEM
   smile_bmp[] =
+  { 0xFF,
+    0xFF,
+    0xFF,
+    0xFF,
+    0xFF,
+    0xFF,
+    0xFF,
+    0xFF },
+  neutral_bmp[] =
+  { 0xAA,
+    0xAA,
+    0xAA,
+    0xAA,
+    0xAA,
+    0xAA,
+    0xAA,
+    0xAA },
+  frown_bmp[] =
+  { 0x55,
+    0x55,
+    0x55,
+    0x55,
+    0x55,
+    0x55,
+    0x55,
+    0x55 };
+/*
+static const uint8_t PROGMEM
+  smile_bmp[] =
   { B00111100,
     B01000010,
     B10100101,
@@ -39,23 +68,27 @@ static const uint8_t PROGMEM
     B10100101,
     B01000010,
     B00111100 };
-
+*/
 void loop() {
-  matrix.clear();
-  matrix.drawBitmap(0, 0, smile_bmp, 8, 8, LED_ON);
-  matrix.writeDisplay();
-  delay(500);
+  while (true)
+  {
+    matrix.clear();
+      matrix.drawBitmap(0, 0, smile_bmp, 8, 8, LED_ON);
+      matrix.writeDisplay();
+      delay(500);
 
-  matrix.clear();
-  matrix.drawBitmap(0, 0, neutral_bmp, 8, 8, LED_ON);
-  matrix.writeDisplay();
-  delay(500);
+      matrix.clear();
+      matrix.drawBitmap(0, 0, neutral_bmp, 8, 8, LED_ON);
+      matrix.writeDisplay();
+      delay(500);
 
-  matrix.clear();
-  matrix.drawBitmap(0, 0, frown_bmp, 8, 8, LED_ON);
-  matrix.writeDisplay();
-  delay(500);
+      matrix.clear();
+      matrix.drawBitmap(0, 0, frown_bmp, 8, 8, LED_ON);
+      matrix.writeDisplay();
+      delay(500);
 
+  }
+  
   matrix.clear();      // clear display
   matrix.drawPixel(0, 0, LED_ON);  
   matrix.writeDisplay();  // write the changes we just made to the display
@@ -83,17 +116,15 @@ void loop() {
   for (int8_t x=0; x>=-36; x--) {
     matrix.clear();
     matrix.setCursor(x,0);
-    matrix.print("Hello");
+    matrix.print("Hello World");
     matrix.writeDisplay();
     delay(100);
   }
-  matrix.setRotation(3);
-  for (int8_t x=7; x>=-36; x--) {
+  for (int8_t x=0; x>=-36; x--) {
     matrix.clear();
     matrix.setCursor(x,0);
-    matrix.print("World");
+    matrix.print("Hallo Welt");
     matrix.writeDisplay();
     delay(100);
   }
-  matrix.setRotation(0);
 }
